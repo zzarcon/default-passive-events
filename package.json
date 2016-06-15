@@ -1,0 +1,20 @@
+{
+  "name": "default-passive-events",
+  "version": "0.1.0",
+  "description": "Makes {passive: true} by default when EventListenerOptions are supported",
+  "main": "default-passive-events.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zzarcon/default-passive-events.git"
+  },
+  "author": "zzarcon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zzarcon/default-passive-events/issues"
+  },
+  "homepage": "https://github.com/zzarcon/default-passive-events#readme",
+  "devDependencies": {
+    "relaser": "^0.2.0"
+  }
+}

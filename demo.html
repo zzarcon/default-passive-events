@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Default Passive Events Demo</title>
+</head>
+<body>
+  <button id="1">1</button>
+  <button id="2">2</button>
+  <button id="3">3</button>
+  <button id="4">4</button>
+  <button id="5">5</button>
+  <button id="6">6</button>
+  <button id="7">7</button>
+  <button id="8">8</button>
+
+  <script src="default-passive-events.js"></script>
+  <script>
+    document.getElementById('1').addEventListener('click', onClick); // {passive: true, capture: false}
+    document.getElementById('2').addEventListener('click', onClick, true); // {passive: true, capture: true}
+    document.getElementById('3').addEventListener('click', onClick, false); // {passive: true, capture: false}
+    document.getElementById('4').addEventListener('click', onClick, {passive: false}); // {passive: false, capture: false}
+    document.getElementById('5').addEventListener('click', onClick, {passive: false, capture: false}); // {passive: false, capture: false}
+    document.getElementById('6').addEventListener('click', onClick, {passive: false, capture: true}); // {passive: false, capture: true}
+    document.getElementById('7').addEventListener('click', onClick, {passive: true, capture: false}); // {passive: true, capture: false}
+    document.getElementById('8').addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
+
+    function onClick() {
+      console.log('onClick', this);
+    }
+  </script>
+</body>
+</html>
