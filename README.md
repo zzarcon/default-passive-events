@@ -21,7 +21,7 @@ document.addEventListener('click', onClick, {passive: true, capture: false}); //
 document.addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
 ```
 
-Check the [demo.html](asd) for a working example.
+Check the [demo.html](https://github.com/zzarcon/default-passive-events/blob/master/demo.html) for a working example.
 
 #Motivation
 Just if you want to take benefit in your apps without having to edit every single one event listener you already have.
