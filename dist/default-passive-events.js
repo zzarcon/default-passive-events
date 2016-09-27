@@ -1,4 +1,6 @@
 (function() {
+  window.eventListenerOptionsSupported = eventListenerOptionsSupported;
+
   var supportsPassive = eventListenerOptionsSupported();  
 
   if (supportsPassive) {
