@@ -1,6 +1,4 @@
 (function() {
-  window.eventListenerOptionsSupported = eventListenerOptionsSupported;
-
   var supportsPassive = eventListenerOptionsSupported();  
 
   if (supportsPassive) {
@@ -13,6 +11,10 @@
       passive: true,
       capture: false
     };
+    var methodAsString = '' + superMethod;
+    console.log("Method: " + methodAsString);    
+    if(methodAsString.indexOf("preventDefault") !== -1){
+    }
 
     EventTarget.prototype.addEventListener = function(type, listener, options) {
       var usesListenerOptions = typeof options === 'object';
@@ -23,20 +25,20 @@
       options.capture = useCapture !== undefined ? useCapture : defaultOptions.capture;
       
       superMethod.call(this, type, listener, options);
-    };
+      };
   }
 
   function eventListenerOptionsSupported() {
-    var sopported = false;
+    var supported = false;
     try {
       var opts = Object.defineProperty({}, 'passive', {
         get: function() {
-          sopported = true;
+          supported = true;
         }
       });
       window.addEventListener("test", null, opts);
     } catch (e) {}
 
-    return sopported;
+    return supported;
   }
 })();

@@ -1,8 +1,8 @@
-var gulp = require("gulp");
-var minifyJs = require("gulp-minify");
+const GULP = require("gulp");
+const MINIFY_JS = require("gulp-minify");
 
-gulp.task('minify-js', function(){
-    return gulp.src('dist/default-passive-events.js')
-        .pipe(minifyJs())
-        .pipe(gulp.dest('dist'));
+GULP.task('minify-js', function(){
+    return GULP.src('dist/default-passive-events.js')
+        .pipe(MINIFY_JS())
+        .pipe(GULP.dest('dist'));
 });
