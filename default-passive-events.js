@@ -25,16 +25,16 @@
   }
 
   function eventListenerOptionsSupported() {
-    var sopported = false;
+    var supported = false;
     try {
       var opts = Object.defineProperty({}, 'passive', {
         get: function() {
-          sopported = true;
+          supported = true;
         }
       });
       window.addEventListener("test", null, opts);
     } catch (e) {}
 
-    return sopported;
+    return supported;
   }
 })();
