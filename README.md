@@ -1,13 +1,13 @@
-#default-passive-events
+# `default-passive-events`
 > Makes {passive: true} by default when EventListenerOptions are supported
 
 40 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default. It basically will set **{ active: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 
-#Installation
+# Installation
 
 Download the code with npm `$ npm i default-passive-events -S` or bower `$ bower i default-passive-events -S` and require the **default-passive-events.js** file.
 
-#Usage
+# Usage
 Those are some examples and their output:
 
 ```javascript
@@ -23,10 +23,10 @@ document.addEventListener('click', onClick, {passive: true, capture: true}); // 
 
 Check the [demo.html](https://github.com/zzarcon/default-passive-events/blob/master/demo.html) for a working example.
 
-#Motivation
+# Motivation
 Just if you want to take benefit in your apps without having to edit every single one event listener you already have.
 
-#Resources
+# Resources
 
 * EventListenerOptions https://github.com/WICG/EventListenerOptions
 * Explanation https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md
@@ -36,6 +36,6 @@ Just if you want to take benefit in your apps without having to edit every singl
 * About scrolling performance https://plus.google.com/+RickByers/posts/cmzrtyBYPQc
 * Nice Chrome blog article https://blog.chromium.org/2016/05/new-apis-to-help-developers-improve.html
 
-#Author
+# Author
 
 [@zzarcon](https://github.com/zzarcon)
