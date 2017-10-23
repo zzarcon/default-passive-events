@@ -2,8 +2,13 @@
   "name": "default-passive-events",
   "version": "0.1.1",
   "description": "Makes {passive: true} by default when EventListenerOptions are supported",
-  "main": "default-passive-events.js",
-  "scripts": {},
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "jest",
+    "test-ci": "jest --runInBand --coverage",
+    "build": "webpack -p",
+    "prepublishOnly": "test-ci && yarn build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zzarcon/default-passive-events.git"
@@ -15,6 +20,13 @@
   },
   "homepage": "https://github.com/zzarcon/default-passive-events#readme",
   "devDependencies": {
-    "relaser": "^0.2.0"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "jest": "^21.2.1",
+    "webpack": "^3.8.1"
+  },
+  "jest": {
+    "resetMocks": true
   }
 }
