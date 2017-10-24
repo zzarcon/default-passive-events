@@ -14,7 +14,7 @@
   <button id="7">7</button>
   <button id="8">8</button>
 
-  <script src="default-passive-events.js"></script>
+  <script src="../dist/index.js"></script>
   <script>
     document.getElementById('1').addEventListener('click', onClick); // {passive: true, capture: false}
     document.getElementById('2').addEventListener('click', onClick, true); // {passive: true, capture: true}
@@ -25,7 +25,7 @@
     document.getElementById('7').addEventListener('click', onClick, {passive: true, capture: false}); // {passive: true, capture: false}
     document.getElementById('8').addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
 
-    function onClick() {
+    function onClick(e) {
       console.log('onClick', this);
     }
   </script>
