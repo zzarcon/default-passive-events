@@ -9,6 +9,7 @@ export const eventListenerOptionsSupported = () => {
     });
 
     window.addEventListener("test", null, opts);
+    window.removeEventListener("test", null, opts);
   } catch (e) {}
 
   return supported;
