@@ -11,10 +11,10 @@ describe('passive events are supported', () => {
     require('../src');
   });
 
-  it('should use passive=true when no options are passed', () => {
-    document.addEventListener('click', handler);
+  it('should use passive=true when no options are passed and is a valid passive event name', () => {
+    document.addEventListener('scroll', handler);
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+    expect(addEventListenerSpy).toHaveBeenCalledWith('scroll', handler, {
       passive: true,
       capture: false
     });
@@ -23,14 +23,14 @@ describe('passive events are supported', () => {
   it('should merge "useCapture" with passive=true', () => {
     document.addEventListener('click', handler, false);
     expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
-      passive: true,
+      passive: false,
       capture: false
     });
   });
 
   it('should work when passing options object', () => {
-    document.addEventListener('click', handler, {capture: false});
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+    document.addEventListener('touchstart', handler, {capture: false});
+    expect(addEventListenerSpy).toHaveBeenCalledWith('touchstart', handler, {
       passive: true,
       capture: false
     });
@@ -38,6 +38,22 @@ describe('passive events are supported', () => {
 
   it('should override passive when passed {passive: false}', () => {
     document.addEventListener('click', handler, {passive: false});
+    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+      passive: false,
+      capture: false
+    });
+  });
+
+  it('should override passive when passed {passive: true} and event name is unsupported', () => {
+    document.addEventListener('click', handler, {passive: true});
+    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+      passive: true,
+      capture: false
+    });
+  });
+
+  it('should use passive=false when event name is an unsupported passive event', () => {
+    document.addEventListener('click', handler);
     expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
       passive: false,
       capture: false
