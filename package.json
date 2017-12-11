@@ -8,7 +8,7 @@
     "test-ci": "jest --runInBand --coverage",
     "watch": "webpack --watch",
     "build": "webpack -p",
-    "prepublishOnly": "test-ci && yarn build"
+    "prepublishOnly": "yarn test-ci && yarn build"
   },
   "repository": {
     "type": "git",
