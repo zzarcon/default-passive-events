@@ -3,6 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Default Passive Events Demo</title>
+  <style>
+    body {
+      height: 2000px;
+      overflow: auto;
+    }
+  </style>
 </head>
 <body>
   <button id="1">1</button>
@@ -24,8 +30,14 @@
     document.getElementById('6').addEventListener('click', onClick, {passive: false, capture: true}); // {passive: false, capture: true}
     document.getElementById('7').addEventListener('click', onClick, {passive: true, capture: false}); // {passive: true, capture: false}
     document.getElementById('8').addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
+    document.addEventListener('scroll', onScroll);
+
+    function onScroll(e) {
+      console.log('onScroll', this);
+    }
 
     function onClick(e) {
+      e.preventDefault();
       console.log('onClick', this);
     }
   </script>
