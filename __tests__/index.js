@@ -59,6 +59,20 @@ describe('passive events are supported', () => {
       capture: false
     });
   });
+
+  it('should work when passing options object with getter-only passive property', () => {
+    var optionsWithPassiveGetter = {
+      get passive () {
+        return true;
+      }
+    };
+
+    document.addEventListener('click', handler, optionsWithPassiveGetter);
+    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+      passive: true,
+      capture: false
+    });
+  });
 });
 
 describe.skip('passive events are not supported', () => {
