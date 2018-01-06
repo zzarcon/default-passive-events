@@ -16,7 +16,7 @@ const getDefaultPassiveOption = (passive, eventName) => {
 };
 
 const getWritableOptions = (options) => {
-  var passiveDescriptor = Object.getOwnPropertyDescriptor(options, 'passive');
+  const passiveDescriptor = Object.getOwnPropertyDescriptor(options, 'passive');
     
   return passiveDescriptor && passiveDescriptor.writable !== true && passiveDescriptor.set === undefined
     ? Object.assign({}, options)
