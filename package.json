@@ -27,7 +27,14 @@
     "jest": "^21.2.1",
     "webpack": "^3.8.1"
   },
+  "files": [
+    "dist/",
+    "src/",
+    "coverage/",
+    "yarn.lock"
+  ],
   "jest": {
     "resetMocks": true
-  }
+  },
+  "dependencies": {}
 }
