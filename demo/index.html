@@ -22,23 +22,23 @@
 
   <script src="../dist/index.js"></script>
   <script>
-    document.getElementById('1').addEventListener('click', onClick); // {passive: true, capture: false}
-    document.getElementById('2').addEventListener('click', onClick, true); // {passive: true, capture: true}
-    document.getElementById('3').addEventListener('click', onClick, false); // {passive: true, capture: false}
-    document.getElementById('4').addEventListener('click', onClick, {passive: false}); // {passive: false, capture: false}
-    document.getElementById('5').addEventListener('click', onClick, {passive: false, capture: false}); // {passive: false, capture: false}
-    document.getElementById('6').addEventListener('click', onClick, {passive: false, capture: true}); // {passive: false, capture: true}
-    document.getElementById('7').addEventListener('click', onClick, {passive: true, capture: false}); // {passive: true, capture: false}
-    document.getElementById('8').addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
+    document.getElementById('1').addEventListener('mouseup', onMouseUp); // {passive: true, capture: false}
+    document.getElementById('2').addEventListener('mouseup', onMouseUp, true); // {passive: true, capture: true}
+    document.getElementById('3').addEventListener('mouseup', onMouseUp, false); // {passive: true, capture: false}
+    document.getElementById('4').addEventListener('mouseup', onMouseUp, {passive: false}); // {passive: false, capture: false}
+    document.getElementById('5').addEventListener('mouseup', onMouseUp, {passive: false, capture: false}); // {passive: false, capture: false}
+    document.getElementById('6').addEventListener('mouseup', onMouseUp, {passive: false, capture: true}); // {passive: false, capture: true}
+    document.getElementById('7').addEventListener('mouseup', onMouseUp, {passive: true, capture: false}); // {passive: true, capture: false}
+    document.getElementById('8').addEventListener('mouseup', onMouseUp, {passive: true, capture: true}); // {passive: true, capture: true}
     document.addEventListener('scroll', onScroll);
 
     function onScroll(e) {
       console.log('onScroll', this);
     }
 
-    function onClick(e) {
+    function onMouseUp (e) {
       e.preventDefault();
-      console.log('onClick', this);
+      console.log('onMouseUp', this);
     }
   </script>
 </body>

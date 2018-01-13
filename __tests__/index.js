@@ -1,60 +1,67 @@
-const eventListenerOptionsSupportedMock = jest.fn();
-const addEventListenerSpy = jest.spyOn(EventTarget.prototype, 'addEventListener');
-const handler = () => {};
+const throwPreventDefault = () => { throw 'Unable to preventDefault inside passive event listener invocation.' };
+const handler             = {
+  simple : () => {}
+};
+const spy                 = {
+  addEventListener : jest.spyOn(EventTarget.prototype, 'addEventListener')
+};
+const init                = {
+  addEventListener : EventTarget.prototype.addEventListener
+};
 
 describe('passive events are supported', () => {
   beforeEach(() => {
     jest.doMock('../src/utils', () => ({
-      eventListenerOptionsSupported: () => true
+      eventListenerOptionsSupported: () => true,
+      noop                         : () => {}
     }));
-
     require('../src');
   });
 
   it('should use passive=true when no options are passed and is a valid passive event name', () => {
-    document.addEventListener('scroll', handler);
+    document.addEventListener('mouseup', handler.simple);
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith('scroll', handler, {
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', expect.any(Function), {
       passive: true,
       capture: false
     });
   });
 
-  it('should merge "useCapture" with passive=true', () => {
-    document.addEventListener('click', handler, false);
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
-      passive: false,
-      capture: false
-    });
-  });
-
-  it('should work when passing options object', () => {
-    document.addEventListener('touchstart', handler, {capture: false});
-    expect(addEventListenerSpy).toHaveBeenCalledWith('touchstart', handler, {
+  it('should merge useCapture=false with passive=true', () => {
+    document.body.addEventListener('mouseup', handler.simple, false);
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', expect.any(Function), {
       passive: true,
       capture: false
     });
   });
 
-  it('should override passive when passed {passive: false}', () => {
-    document.addEventListener('click', handler, {passive: false});
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+  it('should work when passed {capture: false}', () => {
+    document.addEventListener('mouseup', handler.simple, {capture: false});
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', expect.any(Function), {
+      passive: true,
+      capture: false
+    });
+  });
+
+  it('should leave passed {passive: false}', () => {
+    document.addEventListener('mouseup', handler.simple, {passive: false});
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', handler.simple, {
       passive: false,
       capture: false
     });
   });
 
-  it('should override passive when passed {passive: true} and event name is unsupported', () => {
-    document.addEventListener('click', handler, {passive: true});
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+  it('should leave passed {passive: true} and event name is unsupported', () => {
+    document.addEventListener('click', handler.simple, {passive: true});
+    expect(spy.addEventListener).toHaveBeenCalledWith('click', expect.any(Function), {
       passive: true,
       capture: false
     });
   });
 
   it('should use passive=false when event name is an unsupported passive event', () => {
-    document.addEventListener('click', handler);
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+    document.addEventListener('click', handler.simple);
+    expect(spy.addEventListener).toHaveBeenCalledWith('click', handler.simple, {
       passive: false,
       capture: false
     });
@@ -67,25 +74,38 @@ describe('passive events are supported', () => {
       }
     };
 
-    document.addEventListener('click', handler, optionsWithPassiveGetter);
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler, {
+    document.addEventListener('mouseup', handler.simple, optionsWithPassiveGetter);
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', expect.any(Function), {
       passive: true,
       capture: false
     });
   });
+
+  it('should work when trying to call preventDefault inside passive event listener', () => {
+    const mouseUpEvent          = new MouseEvent('mouseup');
+    mouseUpEvent.preventDefault = throwPreventDefault;
+    document.addEventListener('mouseup', handler.simple);
+    spy.addEventListener.mock.calls[0][1](mouseUpEvent); // running event listeners
+    
+    expect(mouseUpEvent.preventDefault).not.toThrow();
+  });
 });
 
-describe.skip('passive events are not supported', () => {
+describe('passive events are not supported', () => {
   beforeEach(() => {
     jest.resetModules();
+    EventTarget.prototype.addEventListener = init.addEventListener;
+
     jest.doMock('../src/utils', () => ({
-      eventListenerOptionsSupported: () => false
+      eventListenerOptionsSupported: () => false,
+      noop                         : () => {}
     }));
+    require('../src');
   });
 
   it('should use pass event handler arguments down', () => {
-    document.addEventListener('click', handler);
+    document.addEventListener('mouseup', handler.simple);
 
-    expect(addEventListenerSpy).toHaveBeenCalledWith('click', handler);
+    expect(spy.addEventListener).toHaveBeenCalledWith('mouseup', handler.simple);
   });
 });

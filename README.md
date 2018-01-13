@@ -1,7 +1,7 @@
 # `default-passive-events` [![Build Status](https://travis-ci.org/zzarcon/default-passive-events.svg?branch=master)](https://travis-ci.org/zzarcon/default-passive-events)
 > Makes {passive: true} by default when EventListenerOptions are supported
 
-40 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default. It basically will set **{ passive: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
+40 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default for scroll-blocking events ([see list below](#targeted-events)). It basically will set **{ passive: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 
 # Installation
 
@@ -17,17 +17,29 @@ Simply require the package:
 require('default-passive-events');
 ```
 
+or include it locally:
+
+```
+<script type="text/javascript" src="node_modules/default-passive-events/dist/index.js">
+```
+
+or from [unpkg](https://unpkg.com/#/) [CDN](https://en.wikipedia.org/wiki/Content_delivery_network):
+
+```
+<script type="text/javascript" src="https://unpkg.com/default-passive-events">
+```
+
 Those are some examples and their output:
 
 ```javascript
-document.addEventListener('click', onClick); // {passive: true, capture: false}
-document.addEventListener('click', onClick, true); // {passive: true, capture: true}
-document.addEventListener('click', onClick, false); // {passive: true, capture: false}
-document.addEventListener('click', onClick, {passive: false}); // {passive: false, capture: false}
-document.addEventListener('click', onClick, {passive: false, capture: false}); // {passive: false, capture: false}
-document.addEventListener('click', onClick, {passive: false, capture: true}); // {passive: false, capture: true}
-document.addEventListener('click', onClick, {passive: true, capture: false}); // {passive: true, capture: false}
-document.addEventListener('click', onClick, {passive: true, capture: true}); // {passive: true, capture: true}
+document.addEventListener('mouseup', onMouseUp); // {passive: true, capture: false}
+document.addEventListener('mouseup', onMouseUp, true); // {passive: true, capture: true}
+document.addEventListener('mouseup', onMouseUp, false); // {passive: true, capture: false}
+document.addEventListener('mouseup', onMouseUp, {passive: false}); // {passive: false, capture: false}
+document.addEventListener('mouseup', onMouseUp, {passive: false, capture: false}); // {passive: false, capture: false}
+document.addEventListener('mouseup', onMouseUp, {passive: false, capture: true}); // {passive: false, capture: true}
+document.addEventListener('mouseup', onMouseUp, {passive: true, capture: false}); // {passive: true, capture: false}
+document.addEventListener('mouseup', onMouseUp, {passive: true, capture: true}); // {passive: true, capture: true}
 ```
 
 Check the [demo.html](https://github.com/zzarcon/default-passive-events/blob/master/demo.html) for a working example.
@@ -35,6 +47,26 @@ Check the [demo.html](https://github.com/zzarcon/default-passive-events/blob/mas
 # Motivation
 
 Just to take benefit in your apps without having to edit every single event listener you already have.
+
+# Targeted events
+
+Default-passive-events package makes following event listeners passive by default:
+
+* scroll
+* wheel
+* touchstart
+* touchmove
+* touchenter
+* touchend
+* touchleave
+* mouseout
+* mouseleave
+* mouseup
+* mousedown
+* mousemove
+* mouseenter
+* mousewheel
+* mouseover
 
 # Resources
 
@@ -50,3 +82,8 @@ Just to take benefit in your apps without having to edit every single event list
 # Author
 
 [@zzarcon](https://github.com/zzarcon)
+
+# Maintainers
+
+[@zzarcon](https://github.com/zzarcon)
+[@frsgit](https://github.com/frsgit)
