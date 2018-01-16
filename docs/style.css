@@ -1,0 +1,106 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Tahoma, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #212121;
+}
+
+body {
+  font-size: 1.4rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: normal;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 1.8rem;
+}
+
+h5, .h5 {
+  font-size: 1.6rem;
+}
+
+code {
+  padding: .2em;
+  background: #B3E5FC;
+  font-family: monospace, 'Lucida console', sans-serif;
+}
+
+header, footer, main {
+  box-sizing: border-box;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+header, footer {
+  padding-top: 10px;
+  padding-bottom: 10px;;
+  width: 100%;
+  color: #fff;
+  background: #03A9F4;
+  box-shadow: 0 1px 8px 1px rgba(0,0,0,.4);
+}
+
+button, a {
+  display: inline-block;
+  vertical-align: middle;
+  text-decoration: none;
+  color: #fff;
+}
+
+button {
+  border: none;
+  margin: 5px 10px;
+  padding: 5px 20px;
+  font-size: 1.6rem;
+  border-radius: 2px;
+  background: #448AFF;
+  box-shadow: 0 1px 3px rgba(0,0,0,.4);
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: box-shadow .15s ease-in-out,
+              opacity .15s ease-in-out;
+}
+
+button:hover, a:hover {
+  opacity: .9;
+}
+
+button:hover {
+  box-shadow: 0 2px 6px 1px rgba(0,0,0,.3);
+}
+
+.p-h-10 {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.v-align-m {
+  vertical-align: middle;
+}
+
+.color-light {
+  color: #B3E5FC;
+}
+
+main {
+  padding-top: 20px;
+  padding-bottom: 40px; /* so main would be never overlapped by footer */
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  font-size: 1.2rem;
+  text-align: right;
+}

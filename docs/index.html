@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Default Passive Events Demo</title>
+  <style>
+    body {
+      height: 2000px;
+    }
+  </style>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body>
+  <header>
+    <h1>Default-passive-events demo page</h1>
+    <p class="h5 color-light">Open up a developer console and try clicking buttons below/scrolling the page.</p>
+    <h4>See? No verbose notifications any more!</43>
+  </header>
+  <main>
+    <p>
+      <button id="1">1</button>
+      <code>addEventListener</code> <strong>without</strong> 3rd argument defaults to <code>{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;false&nbsp;}</code>
+    </p>
+    <p>
+      <button id="2">2</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;true</code> defaults to <code>{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;true&nbsp;}</code>
+    </p>
+    <p>
+      <button id="3">3</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;false</code> defaults to <code>{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;false&nbsp;}</code>
+    </p>
+    <p>
+      <button id="4">4</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;{&nbsp;passive:&nbsp;false&nbsp;}</code> defaults to <code>{&nbsp;passive:&nbsp;false,&nbsp;capture:&nbsp;false&nbsp;}</code>
+    </p>
+    <p>
+      <button id="5">5</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;{&nbsp;passive:&nbsp;false,&nbsp;capture:&nbsp;false&nbsp;}</code> defaults to <code>{&nbsp;passive:&nbsp;false,&nbsp;capture:&nbsp;false&nbsp;}</code>
+    </p>
+    <p>
+      <button id="6">6</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;{&nbsp;passive:&nbsp;false,&nbsp;capture:&nbsp;true&nbsp;}</code> defaults to <code>{&nbsp;passive:&nbsp;false,&nbsp;capture:&nbsp;true&nbsp;}</code>
+    </p>
+    <p>
+      <button id="7">7</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;false&nbsp;}</code> defaults to <code>{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;false&nbsp;}</code>
+    </p>
+    <p>
+      <button id="8">8</button>
+      <code>addEventListener</code> with 3rd argument <code>=&nbsp;{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;true&nbsp;}</code> defaults to <code>{&nbsp;passive:&nbsp;true,&nbsp;capture:&nbsp;true&nbsp;}</code>
+    </p>
+  </main>
+  <footer>
+    <a class="accent p-h-10" href="https://github.com/zzarcon/default-passive-events/" alt="Default-passive-events github page">Default-passive-events</a>
+    <iframe class="v-align-m" src="https://ghbtns.com/github-btn.html?user=zzarcon&repo=default-passive-events&type=star&count=true&size=small" frameborder="0" scrolling="0" width="90" height="20"></iframe>
+  </footer>
+
+  <script src="../dist/index.js"></script>
+  <script>
+    document.getElementById('1').addEventListener('mouseup', onMouseUp); // {passive: true, capture: false}
+    document.getElementById('2').addEventListener('mouseup', onMouseUp, true); // {passive: true, capture: true}
+    document.getElementById('3').addEventListener('mouseup', onMouseUp, false); // {passive: true, capture: false}
+    document.getElementById('4').addEventListener('mouseup', onMouseUp, {passive: false}); // {passive: false, capture: false}
+    document.getElementById('5').addEventListener('mouseup', onMouseUp, {passive: false, capture: false}); // {passive: false, capture: false}
+    document.getElementById('6').addEventListener('mouseup', onMouseUp, {passive: false, capture: true}); // {passive: false, capture: true}
+    document.getElementById('7').addEventListener('mouseup', onMouseUp, {passive: true, capture: false}); // {passive: true, capture: false}
+    document.getElementById('8').addEventListener('mouseup', onMouseUp, {passive: true, capture: true}); // {passive: true, capture: true}
+    document.addEventListener('scroll', onScroll);
+
+    function onScroll(e) {
+      console.log('onScroll', this);
+    }
+
+    function onMouseUp (e) {
+      e.preventDefault();
+      console.log('onMouseUp', this);
+    }
+  </script>
+</body>
+</html>
