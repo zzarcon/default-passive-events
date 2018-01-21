@@ -43,6 +43,7 @@ document.addEventListener('mouseup', onMouseUp, {passive: true, capture: false})
 document.addEventListener('mouseup', onMouseUp, {passive: true, capture: true}); // {passive: true, capture: true}
 ```
 
+# Demo
 Check the [demo page](https://zzarcon.github.io/default-passive-events) for a working example.
 
 # Motivation
