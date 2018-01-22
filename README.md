@@ -21,13 +21,13 @@ require('default-passive-events');
 or include it locally:
 
 ```
-<script type="text/javascript" src="node_modules/default-passive-events/dist/index.js">
+<script type="text/javascript" src="node_modules/default-passive-events/dist/index.js"></script>
 ```
 
 or from [unpkg](https://unpkg.com/#/) [CDN](https://en.wikipedia.org/wiki/Content_delivery_network):
 
 ```
-<script type="text/javascript" src="https://unpkg.com/default-passive-events">
+<script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 ```
 
 Those are some examples and their output:
