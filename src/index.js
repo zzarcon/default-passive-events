@@ -33,7 +33,7 @@ const prepareSafeListener = (listener, passive) => {
 
 const overwriteAddEvent = (superMethod) => {
   EventTarget.prototype.addEventListener = function (type, listener, options) {
-    const usesListenerOptions = typeof options === 'object';
+    const usesListenerOptions = typeof options === 'object' && options !== null;
     const useCapture          = usesListenerOptions ? options.capture : options;
 
     options         = usesListenerOptions ? getWritableOptions(options) : {};
