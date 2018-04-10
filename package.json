@@ -16,6 +16,9 @@
     "url": "git+https://github.com/zzarcon/default-passive-events.git"
   },
   "author": "zzarcon",
+  "contributors": [
+    "FRS <jakub.freisler@gmail.com> (https://github.com/frsgit)"
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/zzarcon/default-passive-events/issues"
@@ -23,10 +26,10 @@
   "homepage": "https://github.com/zzarcon/default-passive-events#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.2",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "jest": "^21.2.1",
-    "webpack": "^3.8.1"
+    "webpack": "^3.11.0"
   },
   "files": [
     "dist/",

@@ -1,4 +1,4 @@
-# `default-passive-events` [![Build Status](https://travis-ci.org/zzarcon/default-passive-events.svg?branch=master)](https://travis-ci.org/zzarcon/default-passive-events)
+# `default-passive-events` [![Build Status](https://travis-ci.org/zzarcon/default-passive-events.svg?branch=master)](https://travis-ci.org/zzarcon/default-passive-events) [![Dependency Status](https://david-dm.org/zzarcon/default-passive-events.svg)](https://david-dm.org/zzarcon/default-passive-events)
 > Makes {passive: true} by default when EventListenerOptions are supported
 
 50 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default for some events ([see list below](#targeted-events)). It basically will set **{ passive: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).

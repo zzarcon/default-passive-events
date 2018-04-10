@@ -1,4 +1,4 @@
-import { eventListenerOptionsSupported, noop } from '../src/utils';
+import { eventListenerOptionsSupported } from '../src/utils';
 const spy = {
   addEventListener : jest.spyOn(window, 'addEventListener')
 };
@@ -18,11 +18,5 @@ describe('eventListenerOptionsSupported test', () => {
     );
 
     expect(eventListenerOptionsSupported()).toBe(false);
-  });
-});
-
-describe('noop test', () => {
-  it('should return nothing', () => {
-    expect(noop()).toBeUndefined();
   });
 });

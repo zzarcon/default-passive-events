@@ -1,4 +1,4 @@
-import { eventListenerOptionsSupported, noop } from './utils';
+import { eventListenerOptionsSupported } from './utils';
 
 const defaultOptions = {
   passive: true,
@@ -23,14 +23,6 @@ const getWritableOptions = (options) => {
     : options;
 };
 
-const prepareSafeListener = (listener, passive) => {
-  if (!passive) return listener;
-  return function (e) {
-    e.preventDefault = noop;
-    return listener.call(this, e);
-  };
-};
-
 const overwriteAddEvent = (superMethod) => {
   EventTarget.prototype.addEventListener = function (type, listener, options) {
     const usesListenerOptions = typeof options === 'object' && options !== null;
@@ -39,7 +31,6 @@ const overwriteAddEvent = (superMethod) => {
     options         = usesListenerOptions ? getWritableOptions(options) : {};
     options.passive = getDefaultPassiveOption(options.passive, type);
     options.capture = useCapture === undefined ? defaultOptions.capture : useCapture;
-    listener        = prepareSafeListener(listener, options.passive);
 
     superMethod.call(this, type, listener, options);
   };

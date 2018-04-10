@@ -14,5 +14,3 @@ export const eventListenerOptionsSupported = () => {
 
   return supported;
 }
-
-export const noop = () => {};
