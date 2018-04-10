@@ -69,6 +69,16 @@ Default-passive-events package makes following event listeners passive by defaul
 * mousewheel
 * mouseover
 
+# Q&A
+
+## Browser rises weird error when I try to preventDefault event inside of a passive listener.
+
+Well, that's true, partly. First of all specification says that you shouldn't ever try to preventDefault from the context of passive listener. But if that's not a possibility you should know that in the console you see only *error-looking log messages*, which are *not actual errors* (ergo: they *do not break your code*).
+
+## Is there a possibility to hide these messages?
+
+Unfortunately, no. Since they are not actual errors there is no way to catch them and (more importantly) there is no way to distinguish whether you're inside of the passive listener context to know when not to call/override preventDefault method. Now, we look at the regarding issue in WHATWG repo whatwg/dom#587.
+
 # Resources
 
 * About passive event listeners https://medium.com/@devlucky/about-passive-event-listeners-224ff620e68c

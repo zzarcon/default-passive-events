@@ -14,7 +14,7 @@
   <header>
     <h1>Default-passive-events demo page</h1>
     <p class="h5 color-light">Open up a developer console and try clicking buttons below/scrolling the page.</p>
-    <h4>See? No verbose notifications any more!</43>
+    <h4>Now look at the source code. Yes, it's that simple!</43>
   </header>
   <main>
     <p>
@@ -55,7 +55,7 @@
     <iframe class="v-align-m" src="https://ghbtns.com/github-btn.html?user=zzarcon&repo=default-passive-events&type=star&count=true&size=small" frameborder="0" scrolling="0" width="90" height="20"></iframe>
   </footer>
 
-  <script src="https://unpkg.com/default-passive-events" defer async></script>
+  <script src="https://unpkg.com/default-passive-events"></script>
   <script>
     document.getElementById('1').addEventListener('mouseup', onMouseUp); // {passive: true, capture: false}
     document.getElementById('2').addEventListener('mouseup', onMouseUp, true); // {passive: true, capture: true}
@@ -72,7 +72,6 @@
     }
 
     function onMouseUp (e) {
-      e.preventDefault(); // default-passive-events also turns off preventDefault inside passive listener violation notice, enjoy ;)
       console.log('onMouseUp', this);
     }
   </script>
