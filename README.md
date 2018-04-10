@@ -2,7 +2,6 @@
 > Makes {passive: true} by default when EventListenerOptions are supported
 
 50 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default for some events ([see list below](#targeted-events)). It basically will set **{ passive: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
-Also, you don't need to worry about errors possibly raised by `event.preventDefault()` calls existing in code of yours or some library you use - **default-passive-events** takes care of that by overriding `preventDefault`method with simple [NOOP](https://en.wikipedia.org/wiki/NOP).
 
 # Installation
 
