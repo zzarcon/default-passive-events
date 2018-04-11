@@ -79,6 +79,13 @@ Well, that's true, partly. First of all specification says that you shouldn't ev
 
 Unfortunately, no. Since they are not actual errors there is no way to catch them and (more importantly) there is no way to distinguish whether you're inside of the passive listener context to know when not to call/override preventDefault method. Now, we look at the regarding issue in WHATWG repo whatwg/dom#587.
 
+## Is there a possibility to bring default addEventListener method back for chosen elements/globally (e.g. for time of running some of the code)?
+
+Yes, original addEventListener is available under `_original` property of our's addEventListener's implementation (so - `element.addEventListener._original`). Having that in mind, you can bring it back for however you want, e.g.:
+```javascript
+element.addEventListener = element.addEventListener._original;
+```
+
 # Resources
 
 * About passive event listeners https://medium.com/@devlucky/about-passive-event-listeners-224ff620e68c

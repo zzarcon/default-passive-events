@@ -79,6 +79,10 @@ describe('passive events are supported', () => {
       capture: false
     });
   });
+
+  it('should original implementation be visible under addEventListener._original property', () => {
+    expect(spy.addEventListener).toEqual(init.addEventListener);
+  });
 });
 
 describe('passive events are not supported', () => {

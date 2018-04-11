@@ -34,6 +34,8 @@ const overwriteAddEvent = (superMethod) => {
 
     superMethod.call(this, type, listener, options);
   };
+
+  EventTarget.prototype.addEventListener._original = superMethod;
 };
 
 const supportsPassive = eventListenerOptionsSupported();
