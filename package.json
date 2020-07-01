@@ -3,11 +3,15 @@
   "version": "1.0.10",
   "description": "Makes {passive: true} by default when EventListenerOptions are supported",
   "main": "dist/index.js",
+  "source": "src/index.js",
+  "module": "dist/index.module.js",
+  "esmodule": "dist/index.modern.js",
+  "unpkg": "dist/index.umd.js",
   "scripts": {
     "test": "jest",
     "test-ci": "jest --runInBand --coverage",
-    "watch": "webpack --watch",
-    "build": "webpack -p",
+    "build": "microbundle",
+    "watch": "microbundle watch",
     "prepublishOnly": "yarn test-ci && yarn build",
     "version": "yarn build && git add dist"
   },
@@ -24,12 +28,10 @@
     "url": "https://github.com/zzarcon/default-passive-events/issues"
   },
   "homepage": "https://github.com/zzarcon/default-passive-events#readme",
+  "dependencies": {},
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.6.1",
-    "jest": "^21.2.1",
-    "webpack": "^3.11.0"
+    "jest": "^26.1.0",
+    "microbundle": "^0.12.2"
   },
   "files": [
     "dist/",
@@ -39,6 +41,5 @@
   ],
   "jest": {
     "resetMocks": true
-  },
-  "dependencies": {}
+  }
 }

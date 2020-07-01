@@ -1,33 +1,42 @@
-# `default-passive-events` [![Build Status](https://travis-ci.org/zzarcon/default-passive-events.svg?branch=master)](https://travis-ci.org/zzarcon/default-passive-events) [![Dependency Status](https://david-dm.org/zzarcon/default-passive-events.svg)](https://david-dm.org/zzarcon/default-passive-events)
+# `default-passive-events` [![Build Status](https://travis-ci.org/zzarcon/default-passive-events.svg?branch=master)](https://travis-ci.org/zzarcon/default-passive-events) [![Dependency Status](https://david-dm.org/zzarcon/default-passive-events.svg)](https://david-dm.org/zzarcon/default-passive-events) [![Bundle size](https://img.shields.io/bundlephobia/minzip/default-passive-events)](https://bundlephobia.com/result?p=default-passive-events)
+
 > Makes {passive: true} by default when EventListenerOptions are supported
 
 50 lines snippet that enables [passive event listeners](https://github.com/WICG/EventListenerOptions/blob/gh-pages/explainer.md) by default for some events ([see list below](#targeted-events)). It basically will set **{ passive: true }** automatically every time you declare a new [event listener](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener).
 
-# Installation
+## Installation
 
-```
-$ yarn add default-passive-events
+```bash
+yarn add default-passive-events
 ```
 
-# Usage
+## Usage
 
 Simply require the package:
 
-```
+```javascript
 require('default-passive-events');
 ```
 
 or include it locally:
 
-```
+```html
 <script type="text/javascript" src="node_modules/default-passive-events/dist/index.js"></script>
 ```
 
 or from [unpkg](https://unpkg.com/#/) [CDN](https://en.wikipedia.org/wiki/Content_delivery_network):
 
-```
+```html
 <script type="text/javascript" src="https://unpkg.com/default-passive-events"></script>
 ```
+
+## Bundle formats
+
+This package is distributed as multiple, different types of output bundles. The most often your bundler will properly choose the correct version by itself.
+
+To get more information about supported bundle formats have a look at [official `microbundle` documentation](https://github.com/developit/microbundle#-output-formats-). Especially interesting is the `modern` format which - if used properly with your bundle system - might produce significantly smaller output code.
+
+## Examples
 
 Those are some examples and their output:
 
@@ -42,14 +51,15 @@ document.addEventListener('mouseup', onMouseUp, {passive: true, capture: false})
 document.addEventListener('mouseup', onMouseUp, {passive: true, capture: true}); // {passive: true, capture: true}
 ```
 
-# Demo
+## Demo
+
 Check the [demo page](https://zzarcon.github.io/default-passive-events) for a working example.
 
-# Motivation
+## Motivation
 
 Just to take benefit in your apps without having to edit every single event listener you already have.
 
-# Targeted events
+## Targeted events
 
 Default-passive-events package makes following event listeners passive by default:
 
@@ -69,24 +79,25 @@ Default-passive-events package makes following event listeners passive by defaul
 * mousewheel
 * mouseover
 
-# Q&A
+## Q&A
 
-## Browser rises weird error when I try to preventDefault event inside of a passive listener.
+### Browser rises weird error when I try to preventDefault event inside of a passive listener.
 
 Well, that's true, partly. First of all specification says that you shouldn't ever try to preventDefault from the context of passive listener. But if that's not a possibility you should know that in the console you see only *error-looking log messages*, which are *not actual errors* (ergo: they *do not break your code*).
 
-## Is there a possibility to hide these messages?
+### Is there a possibility to hide these messages?
 
 Unfortunately, no. Since they are not actual errors there is no way to catch them and (more importantly) there is no way to distinguish whether you're inside of the passive listener context to know when not to call/override preventDefault method. Now, we look at the regarding issue in WHATWG repo whatwg/dom#587.
 
-## Is there a possibility to bring default addEventListener method back for chosen elements/globally (e.g. for time of running some of the code)?
+### Is there a possibility to bring default addEventListener method back for chosen elements/globally (e.g. for time of running some of the code)?
 
 Yes, original addEventListener is available under `_original` property of our's addEventListener's implementation (so - `element.addEventListener._original`). Having that in mind, you can bring it back for however you want, e.g.:
+
 ```javascript
 element.addEventListener = element.addEventListener._original;
 ```
 
-# Resources
+## Resources
 
 * About passive event listeners https://medium.com/@devlucky/about-passive-event-listeners-224ff620e68c
 * EventListenerOptions https://github.com/WICG/EventListenerOptions
@@ -97,11 +108,11 @@ element.addEventListener = element.addEventListener._original;
 * About scrolling performance https://plus.google.com/+RickByers/posts/cmzrtyBYPQc
 * Nice Chrome blog article https://blog.chromium.org/2016/05/new-apis-to-help-developers-improve.html
 
-# Author
+## Author
 
 [@zzarcon](https://github.com/zzarcon)
 
-# Maintainers
+## Maintainers
 
 [@zzarcon](https://github.com/zzarcon)
 [@frsgit](https://github.com/frsgit)
