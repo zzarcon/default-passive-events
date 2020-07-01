@@ -1,6 +1,6 @@
 {
   "name": "default-passive-events",
-  "version": "1.0.10",
+  "version": "2.0.0",
   "description": "Makes {passive: true} by default when EventListenerOptions are supported",
   "main": "dist/index.js",
   "source": "src/index.js",
