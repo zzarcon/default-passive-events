@@ -1,7 +1,0 @@
-language: node_js
-node_js:
-  - '20'
-cache: yarn
-script:
-  - yarn
-  - yarn test-ci

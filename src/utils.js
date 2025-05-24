@@ -3,14 +3,18 @@ export const eventListenerOptionsSupported = () => {
 
   try {
     const opts = Object.defineProperty({}, 'passive', {
+      // eslint-disable-next-line getter-return
       get() {
         supported = true;
-      }
+      },
     });
 
     window.addEventListener('test', null, opts);
     window.removeEventListener('test', null, opts);
-  } catch (e) {}
+    // eslint-disable-next-line no-unused-vars
+  } catch (e) {
+    /* empty */
+  }
 
   return supported;
-}
+};

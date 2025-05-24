@@ -1,0 +1,4 @@
+**/dist
+pnpm-lock.yaml
+CHANGELOG.md
+docs/index.html

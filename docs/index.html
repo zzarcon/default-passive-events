@@ -14,7 +14,7 @@
   <header>
     <h1>Default-passive-events demo page</h1>
     <p class="h5 color-light">Open up a developer console and try clicking buttons below/scrolling the page.</p>
-    <h4>Now look at the source code. Yes, it's that simple!</43>
+    <h4>Now look at the source code. Yes, it's that simple!</h4>
   </header>
   <main>
     <p>
@@ -72,6 +72,11 @@
     }
 
     function onMouseUp (e) {
+      console.log('onMouseUp', this);
+    }
+  </script>
+</body>
+</html>{
       console.log('onMouseUp', this);
     }
   </script>
