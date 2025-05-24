@@ -13,8 +13,8 @@
     "fix": "pnpm eslint --fix && prettier . --write",
     "build": "microbundle",
     "watch": "microbundle watch",
-    "prepublishOnly": "pnpm test-ci && pnpm build",
-    "version": "pnpm build"
+    "prepublishOnly": "npm version && pnpm test-ci && pnpm build",
+    "release": "pnpm publish"
   },
   "keywords": [
     "default passive events",
