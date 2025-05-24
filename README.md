@@ -148,6 +148,10 @@ element.addEventListener = element.addEventListener._original;
 - About scrolling performance https://plus.google.com/+RickByers/posts/cmzrtyBYPQc
 - Nice Chrome blog article https://blog.chromium.org/2016/05/new-apis-to-help-developers-improve.html
 
+## Publishing
+
+To release, simply run `npm version <new_Version_number>` and then `pnpm publish`.
+
 ## Author
 
 [@zzarcon](https://github.com/zzarcon)
