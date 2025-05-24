@@ -3,7 +3,6 @@
   "version": "2.0.0",
   "description": "Makes {passive: true} by default when EventListenerOptions are supported",
   "main": "dist/index.js",
-  "source": "src/index.js",
   "module": "dist/index.module.js",
   "esmodule": "dist/index.modern.js",
   "unpkg": "dist/index.umd.js",
@@ -35,6 +34,7 @@
   },
   "files": [
     "dist",
+    "LICENSE"
   ],
   "jest": {
     "resetMocks": true
