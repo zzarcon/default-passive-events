@@ -104,7 +104,7 @@ Default-passive-events package makes following event listeners passive by defaul
 - mouseover
 - animationstart
 - animationend
-- animationiteratio
+- animationiteration
 - transitionstart
 - transitionend
 - transitionrun
